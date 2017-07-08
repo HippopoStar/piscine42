@@ -6,13 +6,13 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/07 04:26:09 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/07 05:06:57 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/08 05:50:26 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_putchar(char c);
 
-void	aux_ft_putnbr(int n)
+void	aux_ft_putnbr(long int n)
 {
 	if (n > 0)
 	{
@@ -21,8 +21,11 @@ void	aux_ft_putnbr(int n)
 	}
 }
 
-void	ft_putnbr(int n)
+void	ft_putnbr(int nb)
 {
+	long int n;
+
+	n = (long int)nb;
 	if (n < 0)
 	{
 		ft_putchar('-');

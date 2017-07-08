@@ -1,0 +1,5 @@
+Credentials cache: API:B5EEBE79-4C9E-413E-87AA-1043B13D7510
+        Principal: lcabanes@42.FR
+
+  Issued                Expires               Principal
+Jul  3 22:33:37 2017  Jul 10 22:33:37 2017  krbtgt/42.FR@42.FR

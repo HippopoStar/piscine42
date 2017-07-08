@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 05:35:34 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/08 06:23:51 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/08 06:40:56 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,11 @@ void	aux4_ft_print_combn(int n)
 {
 	char a;
 
+	a = '9' - (n - 1);
+	while (a <= '9')
 	{
-		a = '9' - (n - 1);
-		while (a <= '9')
-		{
-			ft_putchar(a);
-			a++;
-		}
+		ft_putchar(a);
+		a++;
 	}
 }
 

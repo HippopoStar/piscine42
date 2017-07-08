@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/06 23:57:09 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/07 04:23:46 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/09 01:17:09 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	aux_ft_print_comb2(int a, int b)
 	ft_putchar(' ');
 	ft_putchar(b0);
 	ft_putchar(b1);
-	if (a != 99 || b != 99)
+	if (a != 98 || b != 99)
 	{
 		ft_putchar(',');
 		ft_putchar(' ');
@@ -41,9 +41,9 @@ void	ft_print_comb2(void)
 	int b;
 
 	a = 0;
-	while (a <= 99)
+	while (a <= 98)
 	{
-		b = 0;
+		b = a + 1;
 		while (b <= 99)
 		{
 			aux_ft_print_comb2(a, b);

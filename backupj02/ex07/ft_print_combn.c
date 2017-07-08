@@ -6,11 +6,9 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 05:35:34 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/08 06:40:56 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/08 23:11:16 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdlib.h>
 
 void	ft_putchar(char c);
 
@@ -20,13 +18,16 @@ void	ft_putchar(char c);
 
 void	aux4_ft_print_combn(int n)
 {
-	char a;
+	int a;
 
-	a = '9' - (n - 1);
-	while (a <= '9')
+	if (n != 10)
 	{
-		ft_putchar(a);
-		a++;
+		a = '9' - (n - 1);
+		while (a <= '9')
+		{
+			ft_putchar(a);
+			a++;
+		}
 	}
 }
 
@@ -44,8 +45,11 @@ void	aux3_ft_print_combn(char *chaine, int n)
 		ft_putchar(chaine[i]);
 		i++;
 	}
-	ft_putchar(',');
-	ft_putchar(' ');
+	if (n != 10)
+	{
+		ft_putchar(',');
+		ft_putchar(' ');
+	}
 }
 
 /*
@@ -87,17 +91,16 @@ void	aux0_ft_print_combn(char *chaine, int n)
 void	ft_print_combn(int n)
 {
 	char	*error;
-	char	*chaine;
+	char	chaine[n];
 	int		i;
 
-	chaine = (char *)malloc(n * sizeof(char));
 	i = 0;
 	while (i < n)
 	{
 		chaine[i] = i + 48;
 		i++;
 	}
+	chaine[n] = '\0';
 	aux0_ft_print_combn(chaine, n);
 	aux4_ft_print_combn(n);
-	free(chaine);
 }

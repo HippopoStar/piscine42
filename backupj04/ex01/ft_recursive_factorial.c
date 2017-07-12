@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/10 08:04:29 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/10 08:28:12 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/12 09:48:35 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		ft_recursive_factorial(int nb)
 	{
 		return (0);
 	}
-	else if (nb == 1)
+	else if (nb == 0)
 	{
 		return (1);
 	}

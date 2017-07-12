@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/10 08:29:15 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/10 08:35:32 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/12 09:34:34 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int		ft_fibonacci(int index)
 	}
 	else
 	{
-		return (ft_fibonnacci(index - 1) + ft_fibonacci(index - 2));
+		return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 05:35:34 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/08 23:11:16 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/12 10:48:25 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void	aux0_ft_print_combn(char *chaine, int n)
 
 void	ft_print_combn(int n)
 {
-	char	*error;
 	char	chaine[n];
 	int		i;
 

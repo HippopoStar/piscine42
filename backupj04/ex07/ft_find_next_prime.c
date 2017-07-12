@@ -6,11 +6,11 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/10 10:43:46 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/11 05:14:45 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/12 10:42:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_is_prime(int nb)
+int		ft_is_prime_bis(int nb)
 {
 	int i;
 	int a;
@@ -31,7 +31,7 @@ int		ft_is_prime(int nb)
 
 void	aux_ft_find_next_prime(int *nb)
 {
-	if (ft_is_prime(*nb) == 0)
+	if (ft_is_prime_bis(*nb) == 0)
 	{
 		*nb = *nb + 1;
 		aux_ft_find_next_prime(nb);

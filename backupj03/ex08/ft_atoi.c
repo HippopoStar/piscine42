@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 15:21:00 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/11 07:56:32 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/12 13:07:58 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ void	aux_ft_atoi(char *str, int *neg, int *d)
 	if (str[*d] == '-')
 	{
 		*neg = 1;
+		*d = *d + 1;
 	}
-	*d = *d + *neg;
+	else if (str[*d] == '+')
+	{
+		*d = *d + 1;
+	}
 }
 
 int		ft_atoi(char *str)

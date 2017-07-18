@@ -6,53 +6,32 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 15:21:00 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/12 13:07:58 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/18 05:23:03 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	aux_ft_atoi(char *str, int *neg, int *d)
-{
-	*neg = 0;
-	*d = 0;
-	while (str[*d] == '\n' || str[*d] == '\t' || str[*d] == '\v' ||
-			str[*d] == '\f' || str[*d] == '\r' || str[*d] == ' ')
-	{
-		*d = *d + 1;
-	}
-	if (str[*d] == '-')
-	{
-		*neg = 1;
-		*d = *d + 1;
-	}
-	else if (str[*d] == '+')
-	{
-		*d = *d + 1;
-	}
-}
-
 int		ft_atoi(char *str)
 {
-	int n;
-	int neg;
-	int p10;
-	int d;
-	int l;
+	long int	nb;
+	int			i;
+	int			signe;
 
-	n = 0;
-	p10 = 1;
-	aux_ft_atoi(str, &neg, &d);
-	l = d;
-	while (str[l] >= '0' && str[l] <= '9')
-		l++;
-	while (--l >= d)
+	nb = 0;
+	i = 0;
+	signe = 1;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r' ||
+			str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		n = n + ((str[l] - 48) * p10);
-		p10 = p10 * 10;
+		if (str[i] == '-')
+			signe = -1;
+		i++;
 	}
-	if (neg == 1)
-		n = -n;
-	if (n != 0)
-		return (n);
-	else
-		return (0);
+	while ('0' <= str[i] && str[i] <= '9')
+	{
+		nb = (10 * nb) + (str[i] - '0');
+		i++;
+	}
+	return ((int)(signe * nb));
 }

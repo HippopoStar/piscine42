@@ -6,16 +6,16 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/19 02:46:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/19 03:41:38 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/19 11:47:52 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+void		ft_putchar(char c);
 
-int		is_base_valid(char *base)
+long int	is_base_valid(char *base)
 {
-	int i;
-	int j;
+	long int	i;
+	long int	j;
 
 	i = 0;
 	while (base[i] != '\0')
@@ -37,32 +37,36 @@ int		is_base_valid(char *base)
 		return (i);
 }
 
-void	print_nbr_base(int nbr, char *base, int length_base)
+void		print_nbr_base(long int long_nbr, char *base, long int length_base)
 {
-	if (nbr == 0);
+	if (long_nbr == 0)
+		;
 	else
 	{
-		print_nbr_base(nbr / length_base, base, length_base);
-		ft_putchar(base[nbr % length_base]);
+		print_nbr_base(long_nbr / length_base, base, length_base);
+		ft_putchar(base[long_nbr % length_base]);
 	}
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+void		ft_putnbr_base(int nbr, char *base)
 {
-	int length_base;
+	long int	length_base;
+	long int	long_nbr;
 
+	long_nbr = nbr;
 	length_base = is_base_valid(base);
-	if (length_base == 0);
-	else if (nbr == 0)
+	if (length_base == 0)
+		;
+	else if (long_nbr == 0)
 		ft_putchar(base[0]);
 	else
 	{
-		if (nbr < 0)
+		if (long_nbr < 0)
 		{
 			ft_putchar('-');
-			print_nbr_base(-nbr, base, length_base);
+			print_nbr_base(-long_nbr, base, length_base);
 		}
 		else
-			print_nbr_base(nbr, base, length_base);
+			print_nbr_base(long_nbr, base, length_base);
 	}
 }

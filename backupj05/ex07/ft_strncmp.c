@@ -6,24 +6,18 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/17 20:30:38 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/18 05:29:38 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/19 10:21:32 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && i < n)
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0' && i < n - 1)
 	{
-		if (s1[i] == s2[i])
 			i++;
-		else
-			return (s1[i] - s2[i]);
 	}
-	if (s1[i] == '\0' && s2[i] == '\0')
-		return (0);
-	else
-		return (s1[i] - s2[i]);
+	return (s1[i] - s2[i]);
 }

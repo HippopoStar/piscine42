@@ -6,9 +6,11 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/12 21:47:53 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/20 08:29:29 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/20 08:22:50 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+void	ft_putchar(char c);
 
 /*
 ** Place une dame en coordonnees (l, c) et renvoie 1 si la case est disponible,
@@ -57,10 +59,14 @@ void	clone_or_print(int echiquier[8][8], int clone[8][8], int consigne)
 		{
 			if (consigne == 0)
 				clone[i][j] = echiquier[i][j];
+			else if (echiquier[i][j] == 1 && consigne == 1)
+				ft_putchar('1' + j);
 			j++;
 		}
 		i++;
 	}
+	if (consigne == 1)
+		ft_putchar('\n');
 }
 
 int		fill(int echiquier[8][8], int l, int c, int place)
@@ -69,6 +75,7 @@ int		fill(int echiquier[8][8], int l, int c, int place)
 
 	if (l == 8)
 	{
+		clone_or_print(echiquier, clone, 1);
 		return (1);
 	}
 	else if (c < 8)

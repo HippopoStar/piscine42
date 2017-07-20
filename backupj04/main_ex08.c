@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   main_ex08.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/10 08:36:15 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/12 21:39:48 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/07/19 23:46:16 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/07/20 06:30:12 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_sqrt(int nb)
-{
-	int i;
+#include <stdio.h>
+#include <unistd.h>
 
-	if (nb < 0 || nb > 2147395600)
-	{
-		return (0);
-	}
-	else
-	{
-		i = 0;
-		while ((i * i) < nb)
-		{
-			i++;
-		}
-		if ((i * i) == nb)
-		{
-			return (i);
-		}
-		else
-		{
-			return (0);
-		}
-	}
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+int		ft_eight_queens_puzzle(void);
+
+int		main(void)
+{
+	printf("%i\n", ft_eight_queens_puzzle());
+	return (0);
 }

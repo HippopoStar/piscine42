@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/10 09:37:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/10 09:45:05 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/12 15:10:24 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ int		ft_is_prime(int nb);
 
 int		main(void)
 {
-	printf("%i\n", ft_is_prime(13));
+	printf("%d\n", ft_is_prime(2147483647));
 }

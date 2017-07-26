@@ -6,11 +6,11 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/26 00:37:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/26 06:28:01 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/26 20:50:07 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "serviette.h"
 
 void	fill_with_42(int **map, int square, int l, int c)
 {
@@ -57,7 +57,7 @@ void	memorise(int **map, int *donnees, int consigne)
 	}
 }
 
-int		square_dimensions(int **map, int l, int c, int nbr_lines, int nbr_columns)
+int		square_dim(int **map, int *donnees, int nbr_l, int nbr_c)
 {
 	int		square;
 	int		i;
@@ -68,21 +68,15 @@ int		square_dimensions(int **map, int l, int c, int nbr_lines, int nbr_columns)
 	square = 0;
 	while (temoin == 1)
 	{
-		if ((l + square) == nbr_lines || (c + square) == nbr_columns)
+		if ((donnees[1] + square) == nbr_l || (donnees[2] + square) == nbr_c)
 			break ;
-		i = l;
-		while (i <= l + square)
+		i = donnees[1] - 1;
+		while (++i <= donnees[1] + square)
 		{
-			j = c;
-			while (j <= c + square)
-			{
+			j = donnees[2] - 1;
+			while (++j <= donnees[2] + square)
 				if (map[i][j] != 0)
-				{
 					temoin = 0;
-				}
-				j++;
-			}
-			i++;
 		}
 		square++;
 	}
@@ -97,14 +91,14 @@ void	solve_map(int **map, int nbr_lines, int nbr_columns)
 	int		*donnees;
 
 	if (!(donnees = (int *)malloc(3 * sizeof(int))))
-		;
+		exit(1);
 	donnees[1] = 0;
-	while (donnees[1] < nbr_lines)			//Test
+	while (donnees[1] < nbr_lines)
 	{
 		donnees[2] = 0;
-		while (donnees[2] < nbr_columns) 	//Test
+		while (donnees[2] < nbr_columns)
 		{
-			donnees[0] = square_dimensions(map, donnees[1], donnees[2], nbr_lines, nbr_columns);
+			donnees[0] = square_dim(map, donnees, nbr_lines, nbr_columns);
 			memorise(map, donnees, 0);
 			donnees[2] = donnees[2] + 1;
 		}

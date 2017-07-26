@@ -6,29 +6,13 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/24 19:43:35 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/26 07:20:04 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/26 22:11:41 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>											//Penser a retirer
+#include "serviette.h"
 
-void	ft_putchar(char c);
-void	print_map(int **map, int nbr_lines, int nbr_columns);
-void	print_enonce(char **enonce);
-
-int		bsq_files(char *argv);
-
-int		ft_atoi(char *str);
-char	**read_enonce(int nbr_lines, int *nbr_columns, int fd);
-int		**initialize_map(int nbr_lines, int nbr_columns);
-void	fill_map(char **enonce, int **map, char empty, char obstacle);
-void	solve_map(int **map, int nbr_lines, int nbr_columns);
-void	from_map_to_perl_set(char **enonce, int **map, char fill_character);
-
-#include <stdlib.h>
-#include <unistd.h>
-
-char	*aux_read_parameters(char *parameters_line, int	*length_parameters, int fd)
+char	*aux_read_par(char *parameters_line, int *length_parameters, int fd)
 {
 	char	*par_temp;
 	int		i;
@@ -40,20 +24,20 @@ char	*aux_read_parameters(char *parameters_line, int	*length_parameters, int fd)
 	}
 	par_temp[*length_parameters] = '\0';
 	i = 0;
-	while (i < *length_parameters - 1)											//test
+	while (i < *length_parameters - 1)
 	{
 		par_temp[i] = parameters_line[i];
 		i++;
 	}
 	free(parameters_line);
-	read(fd, &par_temp[*length_parameters - 1], 1);								//test
+	read(fd, &par_temp[*length_parameters - 1], 1);
 	if (par_temp[*length_parameters - 1] == '\n')
 	{
 		return (par_temp);
 	}
 	else
 	{
-		return (aux_read_parameters(par_temp, length_parameters, fd));
+		return (aux_read_par(par_temp, length_parameters, fd));
 	}
 }
 
@@ -61,15 +45,18 @@ int		read_parameters(int *nbr_lines, char *characters, int fd)
 {
 	int		length_parameters;
 	char	*parameters_line;
+	int		i;
 
-	if (!(parameters_line = (char *)malloc((1 + 1) * sizeof(char))))					//test
+	if (!(parameters_line = (char *)malloc((3 + 1) * sizeof(char))))
 	{
 		return (0);
 	}
-	parameters_line[0] = '0';
-	parameters_line[1] = '\0';															//test
-	length_parameters = 1;
-	parameters_line = aux_read_parameters(parameters_line, &length_parameters, fd);
+	i = -1;
+	while (++i < 3)
+		parameters_line[i] = '0';
+	parameters_line[3] = '\0';
+	length_parameters = 3;
+	parameters_line = aux_read_par(parameters_line, &length_parameters, fd);
 	characters[2] = parameters_line[length_parameters - 2];
 	characters[1] = parameters_line[length_parameters - 3];
 	characters[0] = parameters_line[length_parameters - 4];
@@ -87,27 +74,21 @@ void	bsq_standard(int file_descriptor)
 	char	*characters;
 
 	if (!(characters = (char *)malloc(3 * sizeof(char))))
-		;
+		exit(1);
 	if (!(read_parameters(&nbr_lines, characters, file_descriptor)))
-		;
-	printf("%i\n%c\n%c\n%c\n", nbr_lines, characters[0], characters[1], characters[2]);				//Penser a retirer
-//
+		exit(1);
 	nbr_columns = 0;
 	enonce = read_enonce(nbr_lines, &nbr_columns, file_descriptor);
 	nbr_columns = nbr_columns - 1;
-	printf("%i\n", nbr_columns);														//Penser a retirer
-	map = initialize_map(nbr_lines, nbr_columns);
-	fill_map(enonce, map, characters[0], characters[1]);
-	print_enonce(enonce);
-	ft_putchar('\n');
-//	print_map(map, nbr_lines, nbr_columns);			//Test
-//	ft_putchar('\n');
-	solve_map(map, nbr_lines, nbr_columns);
-//	print_map(map, nbr_lines, nbr_columns);			//Test
-//	ft_putchar('\n');
-	from_map_to_perl_set(enonce, map, characters[2]);
-	print_enonce(enonce);
-//
+	if ((check_error(enonce, characters, nbr_lines, nbr_columns)) == 0)
+	{
+		map = initialize_map(nbr_lines, nbr_columns);
+		fill_map(enonce, map, characters[0], characters[1]);
+		solve_map(map, nbr_lines, nbr_columns);
+		from_map_to_perl_set(enonce, map, characters[2]);
+		print_enonce(enonce);
+		liberator(enonce, map, nbr_lines);
+	}
 }
 
 int		main(int argc, char **argv)
@@ -120,20 +101,17 @@ int		main(int argc, char **argv)
 	}
 	if (argc > 1)
 	{
-		i = 1;
-		while (i < argc)
+		i = 0;
+		while (++i < argc)
 		{
-			printf("%s\n", argv[i]);					//Penser a retirer
 			if (bsq_files(argv[i]) == 1)
 			{
-				printf("TEST\n");						//Penser a retirer
 				return (0);
 			}
 			if (i < argc - 1)
 			{
-				write(1, "\n", 1);
+				ft_putchar('\n');
 			}
-			i++;
 		}
 	}
 	return (0);

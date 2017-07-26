@@ -1,34 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   from_map_to_perl_set.c                             :+:      :+:    :+:   */
+/*   liberator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/26 03:39:28 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/26 20:55:41 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/07/26 21:02:55 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/07/26 21:10:26 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "serviette.h"
 
-void	from_map_to_perl_set(char **enonce, int **map, char fill_character)
+void	liberator_enonce(char **enonce)
 {
 	int		i;
-	int		j;
 
 	i = 0;
 	while (enonce[i])
 	{
-		j = 0;
-		while (enonce[i][j + 1])
-		{
-			if (map[i][j] == 7)
-			{
-				enonce[i][j] = fill_character;
-			}
-			j++;
-		}
+		free(enonce[i]);
 		i++;
 	}
+	free(enonce);
+}
+
+void	liberator_map(int **map, int nbr_lines)
+{
+	int		i;
+
+	i = 0;
+	while (i < nbr_lines)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
+
+void	liberator(char **enonce, int **map, int nbr_lines)
+{
+	liberator_enonce(enonce);
+	liberator_map(map, nbr_lines);
 }

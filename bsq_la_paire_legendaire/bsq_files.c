@@ -6,14 +6,11 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 04:13:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/26 06:56:27 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/26 18:21:22 by vsalome          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <unistd.h>
-
-void	bsq_standard(int file_descriptor);
+#include "serviette.h"
 
 int		bsq_files(char *argv)
 {

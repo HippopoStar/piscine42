@@ -6,14 +6,11 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/24 20:31:02 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/07/26 06:54:18 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/26 20:43:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>								//Penser a retirer
-
-#include <stdlib.h>
-#include <unistd.h>
+#include "serviette.h"
 
 char	*count_columns(char *line0, int *nbr_columns, int fd)
 {
@@ -34,7 +31,7 @@ char	*count_columns(char *line0, int *nbr_columns, int fd)
 	free(line0);
 	read(fd, &line0_temp[i], 1);
 	line0_temp[i + 1] = '\0';
-	if (line0_temp[i] == '\n' || line0_temp[i] == '\0')		//Test
+	if (line0_temp[i] == '\n' || line0_temp[i] == '\0')
 	{
 		return (line0_temp);
 	}
@@ -120,7 +117,6 @@ char	**read_enonce(int nbr_lines, int *nbr_columns, int fd)
 	line0[0] = '\0';
 	line0 = count_columns(line0, nbr_columns, fd);
 	line0[*nbr_columns] = '\0';
-	printf("%i\n", *nbr_columns);											//Penser a retirer
 	if (!(enonce = (char **)malloc((nbr_lines + 1) * sizeof(char *))))
 	{
 		return (0);

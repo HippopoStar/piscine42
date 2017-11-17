@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/26 00:37:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/17 00:50:23 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/17 00:59:36 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ int		square_dim(int **map, int *donnees, int nbr_l, int nbr_c)
 		j = donnees[2] - 1;
 		while (++i <= donnees[1] + square && ++j <= donnees[2] + square)
 		{
-			if (map[donnees[1] + square][j] != 0 || map[i][donnees[2] + square] != 0)
+			if (map[donnees[1] + square][j] != 0
+					|| map[i][donnees[2] + square] != 0)
 				temoin = 0;
 		}
 		square++;
